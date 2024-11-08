@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 08, 2024 at 08:25 AM
+-- Generation Time: Nov 08, 2024 at 08:48 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -102,7 +102,7 @@ CREATE TABLE IF NOT EXISTS `migrations` (
   `migration` varchar(255) NOT NULL,
   `batch` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `migrations`
@@ -129,7 +129,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (18, '2021_03_24_115009_tambah_foreign_key_to_produk_table', 1),
 (19, '2021_03_24_131829_tambah_kode_produk_to_produk_table', 1),
 (20, '2021_05_08_220315_tambah_diskon_to_setting_table', 1),
-(21, '2021_05_09_124745_edit_id_member_to_penjualan_table', 1);
+(21, '2021_05_09_124745_edit_id_member_to_penjualan_table', 1),
+(22, '2024_11_08_074511_tambah_gambar_to_produk_table', 2);
 
 -- --------------------------------------------------------
 
@@ -241,7 +242,7 @@ CREATE TABLE IF NOT EXISTS `penjualan` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id_penjualan`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `penjualan`
@@ -259,7 +260,13 @@ INSERT INTO `penjualan` (`id_penjualan`, `id_member`, `total_item`, `total_harga
 (9, 1, 1, 25000, 5, 23750, 50000, 1, '2024-11-01 06:38:28', '2024-11-01 06:39:00'),
 (10, NULL, 10, 40000, 0, 40000, 50000, 1, '2024-11-01 06:39:47', '2024-11-01 06:40:11'),
 (11, NULL, 0, 0, 0, 0, 0, 2, '2024-11-01 06:40:49', '2024-11-01 06:40:49'),
-(12, NULL, 0, 0, 0, 0, 0, 1, '2024-11-01 06:47:55', '2024-11-01 06:47:55');
+(12, NULL, 0, 0, 0, 0, 0, 1, '2024-11-01 06:47:55', '2024-11-01 06:47:55'),
+(13, NULL, 0, 0, 0, 0, 0, 1, '2024-11-08 00:29:17', '2024-11-08 00:29:17'),
+(14, 2, 1, 12000, 5, 11400, 20000, 1, '2024-11-08 00:29:28', '2024-11-08 00:30:53'),
+(15, NULL, 0, 0, 0, 0, 0, 1, '2024-11-08 00:30:58', '2024-11-08 00:30:58'),
+(16, NULL, 0, 0, 0, 0, 0, 2, '2024-11-08 00:35:53', '2024-11-08 00:35:53'),
+(17, 1, 2, 31000, 5, 29450, 50000, 2, '2024-11-08 00:36:14', '2024-11-08 00:36:37'),
+(18, NULL, 0, 0, 0, 0, 0, 2, '2024-11-08 00:36:39', '2024-11-08 00:36:39');
 
 -- --------------------------------------------------------
 
@@ -278,7 +285,7 @@ CREATE TABLE IF NOT EXISTS `penjualan_detail` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id_penjualan_detail`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `penjualan_detail`
@@ -291,7 +298,10 @@ INSERT INTO `penjualan_detail` (`id_penjualan_detail`, `id_penjualan`, `id_produ
 (4, 6, 6, 3500, 1, 5, 3500, '2024-11-01 06:29:45', '2024-11-01 06:29:59'),
 (5, 9, 2, 25000, 4, 5, 100000, '2024-11-01 06:38:33', '2024-11-01 06:39:00'),
 (6, 10, 4, 4000, 10, 0, 40000, '2024-11-01 06:39:53', '2024-11-01 06:39:56'),
-(7, 12, 5, 17500, 1, 0, 17500, '2024-11-01 06:48:05', '2024-11-01 06:48:05');
+(7, 12, 5, 17500, 1, 0, 17500, '2024-11-01 06:48:05', '2024-11-01 06:48:05'),
+(9, 14, 3, 12000, 1, 5, 12000, '2024-11-08 00:30:42', '2024-11-08 00:30:53'),
+(10, 17, 1, 13500, 1, 5, 13500, '2024-11-08 00:36:20', '2024-11-08 00:36:37'),
+(11, 17, 5, 17500, 1, 5, 17500, '2024-11-08 00:36:23', '2024-11-08 00:36:37');
 
 -- --------------------------------------------------------
 
@@ -330,6 +340,7 @@ CREATE TABLE IF NOT EXISTS `produk` (
   `diskon` tinyint(4) NOT NULL DEFAULT 0,
   `harga_jual` int(11) NOT NULL,
   `stok` int(11) NOT NULL,
+  `gambar` varchar(255) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id_produk`),
@@ -342,13 +353,13 @@ CREATE TABLE IF NOT EXISTS `produk` (
 -- Dumping data for table `produk`
 --
 
-INSERT INTO `produk` (`id_produk`, `id_kategori`, `kode_produk`, `nama_produk`, `merk`, `harga_beli`, `diskon`, `harga_jual`, `stok`, `created_at`, `updated_at`) VALUES
-(1, 2, 'P000001', 'Rinso Cair', 'Rinso', 12000, 0, 13500, 117, '2024-11-01 04:48:26', '2024-11-01 04:57:54'),
-(2, 3, 'P000002', 'Kerupuk Basah', 'Kerupuk Kapuas', 20000, 0, 25000, 115, '2024-11-01 04:49:10', '2024-11-01 06:39:00'),
-(3, 3, 'P000003', 'Taro', 'Taro', 9800, 0, 12000, 50, '2024-11-01 04:49:43', '2024-11-01 04:49:43'),
-(4, 3, 'P000004', 'Kue Bakri', 'Kue', 3000, 0, 4000, 53, '2024-11-01 04:50:15', '2024-11-01 06:40:11'),
-(5, 3, 'P000005', 'Tango', 'Tango', 15000, 0, 17500, 120, '2024-11-01 04:50:54', '2024-11-01 04:56:30'),
-(6, 2, 'P000006', 'Sabun Cair', 'Lifeboy', 2000, 0, 3500, 48, '2024-11-01 05:00:46', '2024-11-01 06:29:59');
+INSERT INTO `produk` (`id_produk`, `id_kategori`, `kode_produk`, `nama_produk`, `merk`, `harga_beli`, `diskon`, `harga_jual`, `stok`, `gambar`, `created_at`, `updated_at`) VALUES
+(1, 2, 'P000001', 'Rinso Cair', 'Rinso', 12000, 0, 13500, 116, NULL, '2024-11-01 04:48:26', '2024-11-08 00:36:37'),
+(2, 3, 'P000002', 'Kerupuk Basah', 'Kerupuk Kapuas', 20000, 0, 25000, 115, NULL, '2024-11-01 04:49:10', '2024-11-01 06:39:00'),
+(3, 3, 'P000003', 'Taro', 'Taro', 9800, 0, 12000, 49, NULL, '2024-11-01 04:49:43', '2024-11-08 00:30:53'),
+(4, 3, 'P000004', 'Kue Bakri', 'Kue', 3000, 0, 4000, 53, NULL, '2024-11-01 04:50:15', '2024-11-01 06:40:11'),
+(5, 3, 'P000005', 'Tango', 'Tango', 15000, 0, 17500, 119, NULL, '2024-11-01 04:50:54', '2024-11-08 00:36:37'),
+(6, 2, 'P000006', 'Sabun Cair', 'Lifeboy', 2000, 0, 3500, 48, NULL, '2024-11-01 05:00:46', '2024-11-01 06:29:59');
 
 -- --------------------------------------------------------
 
@@ -373,8 +384,7 @@ CREATE TABLE IF NOT EXISTS `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('1MOaU2AqZUV4zZ55qKboy90stEkaMpGIGAzvonRy', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoieU9CWFVKWDBtSVBxQzVyR051cElzMHN3S0llYzFOZXIyamNySjBvaSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9kYXNoYm9hcmQiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX1zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxO3M6MTc6InBhc3N3b3JkX2hhc2hfd2ViIjtzOjYwOiIkMnkkMTAkLkhMTUFsbjF3a25PYzRWZFYvM1QxdVM4YWVCMXMvRjUuSllUY2R0Rmd1Y01vZDAuNjFzRC4iO30=', 1731049792),
-('oeqIlJaikcg678ypSMwrDoQcbhxKf0E3WhUc7DPE', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiMWRZcEZxR0VSVUxXdk5DQzZpV2xjclpONFNpQWp6YjY0cmV5QjVtQiI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mjc6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9sb2dpbiI7fX0=', 1730468931);
+('f8LuwDFXJ61UcZ7o4uZoLBU2m8I8yRU78Bl8aNGt', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiMmVsckZrb1pMV0JJeDBTYTNXZTA4YTBnNXRhWGRHTzZ2ZkU0bUMwdCI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mjg6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9wcm9kdWsiO31zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxO3M6MTc6InBhc3N3b3JkX2hhc2hfd2ViIjtzOjYwOiIkMnkkMTAkLkhMTUFsbjF3a25PYzRWZFYvM1QxdVM4YWVCMXMvRjUuSllUY2R0Rmd1Y01vZDAuNjFzRC4iO30=', 1731051814);
 
 -- --------------------------------------------------------
 

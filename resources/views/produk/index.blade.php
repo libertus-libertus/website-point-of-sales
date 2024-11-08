@@ -72,7 +72,7 @@
                 {data: 'harga_jual'},
                 {data: 'diskon'},
                 {data: 'stok'},
-                {data: 'aksi', searchable: false, sortable: false},
+                {data: 'aksi', searchable: false, sortable: false, className: 'text-center'},
             ]
         });
 
