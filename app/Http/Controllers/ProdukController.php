@@ -81,7 +81,22 @@ class ProdukController extends Controller
         $produk = Produk::latest()->first() ?? new Produk();
         $request['kode_produk'] = 'P'. tambah_nol_didepan((int)$produk->id_produk +1, 6);
 
-        $produk = Produk::create($request->all());
+        // $produk = Produk::create($request->all());
+
+        // Ambil data inputan selain gambar
+        // $data = $request->except('gambar');
+
+        // Menyimpan gambar
+        if ($request->hasFile('gambar')) {
+            // Simpan gambar di folder 'produk' dalam 'public'
+            $path = $request->file('gambar')->store('gambar-produk', 'public'); // folder 'produk' dalam 'public'
+            $data['gambar'] = $path; // Simpan nama path gambar ke kolom 'gambar'
+        }
+
+        dd($data);
+
+        // Simpan data produk ke database
+        $produk = Produk::create($data);
 
         return response()->json('Data berhasil disimpan', 200);
     }

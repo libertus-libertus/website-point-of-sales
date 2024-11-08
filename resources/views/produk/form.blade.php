@@ -1,6 +1,6 @@
 <div class="modal fade" id="modal-form" tabindex="-1" role="dialog" aria-labelledby="modal-form">
     <div class="modal-dialog modal-lg" role="document">
-        <form action="" method="post" class="form-horizontal">
+        <form action="" method="post" class="form-horizontal" enctype="multipart/form-data">
             @csrf
             @method('post')
 
@@ -18,6 +18,16 @@
                             <span class="help-block with-errors"></span>
                         </div>
                     </div>
+
+                    <!-- Gambar Produk -->
+                    <div class="form-group row">
+                        <label for="gambar" class="col-lg-2 col-lg-offset-1 control-label">Gambar</label>
+                        <div class="col-lg-6">
+                            <input type="file" name="gambar" id="gambar" class="form-control">
+                            <span class="help-block with-errors"></span>
+                        </div>
+                    </div>
+
                     <div class="form-group row">
                         <label for="id_kategori" class="col-lg-2 col-lg-offset-1 control-label">Kategori</label>
                         <div class="col-lg-6">
