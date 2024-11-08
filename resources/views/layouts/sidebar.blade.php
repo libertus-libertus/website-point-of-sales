@@ -12,7 +12,7 @@
                 <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
             </div>
         </div>
-        
+
         <!-- /.search form -->
         <!-- sidebar menu: : style can be found in sidebar.less -->
         <ul class="sidebar-menu" data-widget="tree">
@@ -62,12 +62,7 @@
             </li>
             <li>
                 <a href="{{ route('transaksi.index') }}">
-                    <i class="fa fa-cart-arrow-down"></i> <span>Transaksi Aktif</span>
-                </a>
-            </li>
-            <li>
-                <a href="{{ route('transaksi.baru') }}">
-                    <i class="fa fa-cart-arrow-down"></i> <span>Transaksi Baru</span>
+                    <i class="fa fa-cart-arrow-down"></i> <span>Transaksi Penjualan</span>
                 </a>
             </li>
             <li class="header">REPORT</li>
@@ -88,11 +83,6 @@
                 </a>
             </li>
             @else
-            <li>
-                <a href="{{ route('transaksi.index') }}">
-                    <i class="fa fa-cart-arrow-down"></i> <span>Transaksi Aktif</span>
-                </a>
-            </li>
             <li>
                 <a href="{{ route('transaksi.baru') }}">
                     <i class="fa fa-cart-arrow-down"></i> <span>Transaksi Baru</span>
